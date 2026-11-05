@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ender Radio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>📻 Ender Radio</h1>
+      <p class="subtitle">Add any YouTube video and play just its audio!</p>
+    </header>
+
+    <section class="add-section card">
+      <h2>Add a song</h2>
+      <div class="add-form">
+        <input type="url" id="urlInput" placeholder="Paste a YouTube URL here..." spellcheck="false">
+        <button id="addButton" class="btn btn-primary">➕ Add</button>
+      </div>
+      <p class="hint">Example: <code>https://www.youtube.com/watch?v=VIDEO_ID</code></p>
+      <p id="errorBox" class="error hidden"></p>
+    </section>
+
+    <section class="player card">
+      <div class="now-playing">
+        <div class="art" id="art">🎵</div>
+        <div class="track-info">
+          <div class="track-title" id="trackTitle">Nothing playing</div>
+          <div class="track-channel" id="trackChannel"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="prevButton" class="btn control" title="Previous">⏮</button>
+        <button id="playButton" class="btn control big" title="Play/Pause">▶</button>
+        <button id="nextButton" class="btn control" title="Next">⏭</button>
+        <button id="shuffleButton" class="btn control" title="Shuffle">🔀</button>
+      </div>
+
+      <div class="progress">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="seekBar" min="0" max="100" value="0">
+        <span id="durationTime">0:00</span>
+      </div>
+
+      <div class="volume-row">
+        <span>🔈</span>
+        <input type="range" id="volumeBar" min="0" max="100" value="100">
+        <span id="volumeValue">100%</span>
+      </div>
+
+      <!-- Hidden iframe that plays the audio -->
+      <iframe id="playerIFrame" style="display:none"></iframe>
+    </section>
+
+    <section class="queue card">
+      <h2>Your Queue <span id="queueCount" class="count">0 songs</span></h2>
+      <ul id="queueList" class="queue-list"></ul>
+      <p id="emptyQueue" class="empty">No songs yet. Add a YouTube URL above to start your radio! 🎶</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
